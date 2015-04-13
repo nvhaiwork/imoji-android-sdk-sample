@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/imoji-android-sdk-sample.iml" filepath="$PROJECT_DIR$/imoji-android-sdk-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdksample/sdksample.iml" filepath="$PROJECT_DIR$/sdksample/sdksample.iml" />
+    </modules>
+  </component>
+</project>
