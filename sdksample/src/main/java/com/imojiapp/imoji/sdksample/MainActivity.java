@@ -55,8 +55,6 @@ private static final String LOG_TAG = MainActivity.class.getSimpleName();
                 OutlineOptions options = new OutlineOptions();
                 options.color = Color.parseColor("#F88920");
                 ImojiApi.with(MainActivity.this).loadFull(imoji, options).into(mFullImoji);
-
-
             }
         });
 
