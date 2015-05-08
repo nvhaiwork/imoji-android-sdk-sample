@@ -12,7 +12,6 @@
         android:id="@+id/et_search"
         android:layout_width="match_parent"
         android:imeOptions="actionDone"
-        android:hint="Search"
         android:inputType="text"
         android:layout_height="56dp"/>
 
