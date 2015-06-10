@@ -18,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver
+            android:name="com.imojiapp.imoji.sdksample.ExternalGrantReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.imojiapp.imoji.oauth.external.GRANT" />
+
+                <category android:name="com.imojiapp.imoji.category.EXTERNAL_CATEGORY" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

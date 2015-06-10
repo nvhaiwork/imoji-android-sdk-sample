@@ -1,6 +1,8 @@
 package com.imojiapp.imoji.sdksample.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import com.imojiapp.imoji.sdk.Imoji;
 import com.imojiapp.imoji.sdk.ImojiApi;
 import com.imojiapp.imoji.sdksample.R;
+import com.squareup.picasso.Transformation;
 
 import java.util.List;
 

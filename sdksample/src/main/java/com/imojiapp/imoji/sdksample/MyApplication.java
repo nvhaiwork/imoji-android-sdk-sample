@@ -3,6 +3,7 @@ package com.imojiapp.imoji.sdksample;
 import android.app.Application;
 
 import com.imojiapp.imoji.sdk.ImojiApi;
+import com.imojiapp.imoji.sdk.ImojiApi.Builder;
 
 /**
  * Created by sajjadtabib on 4/17/15.

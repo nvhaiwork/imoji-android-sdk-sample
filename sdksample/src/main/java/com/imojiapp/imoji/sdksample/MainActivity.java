@@ -1,8 +1,8 @@
 package com.imojiapp.imoji.sdksample;
 
 import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.imojiapp.imoji.sdk.Callback;
 import com.imojiapp.imoji.sdk.Imoji;
 import com.imojiapp.imoji.sdk.ImojiApi;
+import com.imojiapp.imoji.sdk.ImojiCategory;
 import com.imojiapp.imoji.sdk.OutlineOptions;
 import com.imojiapp.imoji.sdksample.adapters.ImojiAdapter;
 
@@ -54,10 +55,35 @@ public class MainActivity extends ActionBarActivity {
                 Imoji imoji = (Imoji) parent.getItemAtPosition(position);
                 OutlineOptions options = new OutlineOptions();
                 options.color = Color.parseColor("#F88920");
+//                ImojiApi.with(MainActivity.this).loadFull(imoji, options).into(mFullImoji);
                 ImojiApi.with(MainActivity.this).loadFull(imoji, options).into(mFullImoji);
 
 
             }
+        });
+
+        mImojiGrid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Imoji imoji = (Imoji) parent.getItemAtPosition(position);
+
+                ImojiApi.with(MainActivity.this).addImojiToUserCollection(imoji.getImojiId(), new Callback<String, String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        Log.d(LOG_TAG, "Add Imoji Success with result: " + result);
+
+                    }
+
+                    @Override
+                    public void onFailure(String result) {
+                        Log.d(LOG_TAG, "Add Imoji Failed with result: " + result);
+                    }
+                });
+
+
+                return false;
+            }
+
         });
 
         ImojiApi.with(this).getFeatured(new Callback<List<Imoji>, String>() {
@@ -107,6 +133,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         if (item.getItemId() == R.id.action_create_imoji) {
             ImojiApi.with(this).createImoji();
             return true;
@@ -135,8 +162,25 @@ public class MainActivity extends ActionBarActivity {
                     Log.d(LOG_TAG, "failed to get user imojis: error");
                 }
             });
+        }else if (item.getItemId() == R.id.action_get_categories) {
+            ImojiApi.with(this).getImojiCategories(ImojiCategory.Classification.TRENDING, new Callback<List<ImojiCategory>, String>() {
+                @Override
+                public void onSuccess(List<ImojiCategory> result) {
+                    for (ImojiCategory c : result) {
+                        Log.d(LOG_TAG, "" + c.getTitle() );
+                    }
+                }
+
+                @Override
+                public void onFailure(String result) {
+
+                }
+            });
+
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
 }
